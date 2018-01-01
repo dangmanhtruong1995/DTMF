@@ -6,7 +6,7 @@ The original DTMF has 16 signals each using a combination of 2 frequencies. But 
 Unlike many other pieces of modulation/demodulation code on the internet, this one has actually been tested in the wild :)
 
 An outline of how the code works:
-- The sender converts text to binary, then transmit "0" / "1" DTMF signals (here the timing is 0.3s for tone duration, and 0.1s for silence period between tones ). The transmission code is taken from: https://sites.google.com/a/nd.edu/adsp-nik-kleber/home/advanced-digital-signal-processing/project-3-touch-tone . Apparently the author used a marginally stable IIR filter to implement a digital oscillator. 
+- The sender converts text to binary, then transmit "0" / "1" DTMF signals (here the timing is 0.3s for tone duration, and 0.1s for silence period between tones ). The transmission code is taken from: https://sites.google.com/a/nd.edu/adsp-nik-kleber/home/advanced-digital-signal-processing/project-3-touch-tone . Apparently the author used a marginally stable IIR filter to implement a digital oscillator. For the header and the ending sequence, I used Barker code length 11 and 13 respectively (-1 is converted into 0)
 - The receiver side first uses 2 ridiculously-high-ordered-and-ridiculously-narrow bandpass filters to extract the "0" and "1" frequency components, respectively:
 
 filter_order = 1000;
@@ -29,7 +29,7 @@ After this is done we will find the beginning and end of each "1" and "0" signal
 (note that the image is not reproducible from the code, you will have to dig around to make it)
 
 
-Then we assemble the bits and convert back into text :)
+Then we assemble the bits and convert back into text :) (of course we have to remove the header and the ending sequence first, for that I used correlation and it works fine :) )
 
 Enjoy! 
 
