@@ -10,9 +10,13 @@ An outline of how the code works:
 - The receiver side first uses 2 ridiculously-high-ordered-and-ridiculously-narrow bandpass filters to extract the "0" and "1" frequency components, respectively:
 
 filter_order = 1000;
+
 one_band = [[((2*696)/Fs) ((2*698)/Fs)] [((2*1208)/Fs) ((2*1210)/Fs)]];
+
 one_dtmf_filter = fir1(filter_order, one_band);
+
 zero_band = [[((2*940)/Fs) ((2*942)/Fs)] [((2*1335)/Fs) ((2*1337)/Fs)]];
+
 zero_dtmf_filter = fir1(filter_order, zero_band);
 
 After this is done we will find the beginning and end of each "1" and "0" signal. The code is from https://github.com/codyaray/dtmf-signaling. Basically it finds the silence period which is at least 10 ms and any tone period more than 100ms) :
@@ -26,6 +30,8 @@ After this is done we will find the beginning and end of each "1" and "0" signal
 
 
 Then we assemble the bits and convert back into text :)
+
+Enjoy! 
 
 Video demo: 
 
