@@ -38,3 +38,5 @@ Video demo:
 [![DEMO ](https://user-images.githubusercontent.com/20016033/34468760-57425190-ef42-11e7-9024-8c18dfbe21b2.PNG)](https://www.youtube.com/watch?v=vwQVmNnWa4s "DEMO")
 
 UPDATE: Originally I did this stuff because my Digital communication teacher said that whoever did this would get an A for the course. But I was only able to finish this after the final exam. So sadly there goes all my efforts :( 
+
+UPDATE 2: C+ :(
